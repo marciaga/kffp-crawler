@@ -1,5 +1,5 @@
 {
-  "name": "kffp-scraper",
+  "name": "kffp-crawler",
   "version": "1.0.0",
   "description": "A crawler for KFFP Pollard API",
   "main": "index.js",
@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Mark Arciaga",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.15.3",
