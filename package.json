@@ -1,0 +1,25 @@
+{
+  "name": "kffp-scraper",
+  "version": "1.0.0",
+  "description": "A crawler for KFFP Pollard API",
+  "main": "index.js",
+  "scripts": {
+    "dev": "babel-node lib/index.js",
+    "build": "babel lib -d dist",
+    "start": "node dist/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.15.3",
+    "mongodb": "^2.2.22"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.22.2",
+    "babel-plugin-syntax-async-functions": "^6.13.0",
+    "babel-plugin-transform-regenerator": "^6.22.0",
+    "babel-preset-es2015": "^6.22.0"
+  }
+}
