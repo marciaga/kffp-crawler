@@ -1164,6 +1164,10 @@ node-pre-gyp@^0.6.29:
     tar "~2.2.1"
     tar-pack "~3.3.0"
 
+node-progress@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/node-progress/-/node-progress-0.1.0.tgz#ac5a999c162148b19fa7797842a25d10f0ebc513"
+
 nopt@~3.0.6:
   version "3.0.6"
   resolved "https://registry.yarnpkg.com/nopt/-/nopt-3.0.6.tgz#c6465dbf08abcd4db359317f79ac68a646b28ff9"
