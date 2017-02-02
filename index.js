@@ -46,11 +46,11 @@ const crawler = (links) => {
                 dj: 'Meow'
             }
         })
-        .then(text => console.log(text))
-        .run((err, nightmare) => {
-            console.log('done');
-            nightmare.end();
-        });
+        .end()
+        .then(result => {
+            consle.log(result);
+        })
+        .catch(e => console.log(e));
 
     // spin up nightmare and go to town
     // process.exit(0);
