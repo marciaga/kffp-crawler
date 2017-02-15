@@ -8,8 +8,7 @@ const visitInitialPage = async (url, callback) => {
     console.log(`Visiting page ${url}...`);
 
     try {
-        const result = await axios.get(url);
-        const { status, data } = result;
+        const { status, data } = await axios.get(url);
 
         console.log(`Status code: ${status}`);
 
@@ -25,10 +24,10 @@ const visitInitialPage = async (url, callback) => {
 };
 
 const collectInitialLinks = ($) => {
-    const relativeLinks = $('.schedule-block a');
-    console.log(`Found ${relativeLinks.length} relative links on page.`);
+    const absoluteLinks = $('.schedule-block a');
+    console.log(`Found ${absoluteLinks.length} relative links on page.`);
 
-    return relativeLinks.map((i, link) => $(link).attr('href')).get();
+    return absoluteLinks.map((i, link) => $(link).attr('href')).get();
 };
 
 const crawler = (links) => {
@@ -36,25 +35,34 @@ const crawler = (links) => {
 
     nightmare
         .goto(links[0])
-        .wait(5000)
+        .wait(10000)
         .evaluate(function () {
             const showName = document.getElementsByClassName('entry-title')[0].innerHTML;
-
+            const djName = document.getElementsByClassName('dj-name')[0].innerHTML;
+            const html = document.querySelectorAll('.playlist-list')[0].outerHTML;
 
             return {
                 showName,
-                dj: 'Meow'
+                djName,
+                html
             }
         })
         .end()
         .then(result => {
-            consle.log(result);
+            const $ = cheerio.load(result.html) // an html string
+
+            $('.playlist-list > li').map((i, elem) => {
+                console.log($(elem).find('h3').text()); // logs all dates
+            });
+
+
+            // const playlists = playlistBlock.map(o => ({
+            //     date: o.children[0],
+            // });
+
+            process.exit(0);
         })
         .catch(e => console.log(e));
-
-    // spin up nightmare and go to town
-    // process.exit(0);
 };
-
 
 visitInitialPage(START_URL, crawler);
