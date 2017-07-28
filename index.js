@@ -84,11 +84,13 @@ const crawler = (links, db, nightmare) => {
         .evaluate(function () {
             const showName = document.getElementsByClassName('entry-title')[0].innerHTML;
             const djName = document.getElementsByClassName('dj-name')[0].innerHTML;
+            const description = document.querySelectorAll('.entry-content p')[0].outerHTML;
             const html = document.querySelectorAll('.playlist-list')[0].outerHTML;
 
             return {
                 showName,
                 djName,
+                description,
                 html
             };
         })
@@ -125,6 +127,7 @@ const crawler = (links, db, nightmare) => {
             const doc = {
                 showName,
                 djName,
+                description,
                 playlists
             };
             // write to mongo
