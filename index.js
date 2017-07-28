@@ -95,7 +95,7 @@ const crawler = (links, db, nightmare) => {
             };
         })
         .then(result => {
-            const { html, showName, djName } = result;
+            const { html, showName, djName, description } = result;
             const $ = cheerio.load(html);
 
             const playlists = $('.playlist-list > li').map((i, elem) => {
